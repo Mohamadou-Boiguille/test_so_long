@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! -d "./other_maps/" ]; then
+  echo "Le dossier 'maps/error' n'existe pas."
+  exit 1
+fi
+
+for file in ./other_maps/*/*; do
+    echo "======================== $file ========================"
+   echo $file
+    valgrind --leak-check=yes --show-leak-kinds=all ./so_long "$file"
+done
+
